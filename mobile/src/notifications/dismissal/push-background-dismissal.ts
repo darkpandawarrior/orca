@@ -3,13 +3,19 @@ import * as TaskManager from 'expo-task-manager'
 import * as Notifications from 'expo-notifications'
 import { readOrcaPushPayload } from '../payload-identity/push-payload'
 import { dismissPresentedPushNotification } from './push-tray-dismissal'
+import { runPromptActionResponse } from '../prompt-actions/prompt-action-runner'
 
 const TASK_NAME = 'orca-push-dismissal'
 
 TaskManager.defineTask<Notifications.NotificationTaskPayload>(
   TASK_NAME,
   async ({ data, error }) => {
-    if (error || !data || 'actionIdentifier' in data) {
+    if (error || !data) {
+      return
+    }
+    if ('actionIdentifier' in data) {
+      // A watch or shade action tap, possibly with the app killed.
+      await runPromptActionResponse(data)
       return
     }
     let raw: unknown = data.data

@@ -24,6 +24,9 @@ export async function presentForegroundPush(
       title: content.title,
       body: content.body,
       data: content.data,
+      ...(typeof content.data?.categoryId === 'string'
+        ? { categoryIdentifier: content.data.categoryId }
+        : {}),
       sound: content.sound === 'default' ? 'default' : false
     },
     trigger:

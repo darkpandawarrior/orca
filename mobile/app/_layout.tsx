@@ -1,4 +1,8 @@
 import { startAndroidForegroundPushPresentation } from '../src/notifications/foreground-delivery/android-foreground-push'
+import {
+  ensureEventChannels,
+  registerPromptActionCategories
+} from '../src/notifications/prompt-actions/prompt-action-categories'
 import { registerPushDismissalTask } from '../src/notifications/dismissal/push-background-dismissal'
 import { readNativeNotificationData } from '../src/notifications/payload-identity/native-notification-data'
 import {
@@ -58,6 +62,8 @@ subscribeMobileUiLanguage(() => {
   void ensureDesktopNotificationChannel().catch(() => {})
 })
 void registerPushDismissalTask().catch(() => {})
+void registerPromptActionCategories().catch(() => {})
+void ensureEventChannels().catch(() => {})
 
 // Register before scheduling so foreground delivery uses the same suppression policy.
 Notifications.setNotificationHandler({

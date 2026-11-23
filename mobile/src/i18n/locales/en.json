@@ -1045,6 +1045,21 @@
     "desktopChannel": {
       "silentName": "Orca silent notifications",
       "name": "Desktop Notifications"
+    },
+    "eventChannels": {
+      "needsYou": "Needs you",
+      "finished": "Finished",
+      "failed": "Failed"
+    },
+    "promptActions": {
+      "allow": "Allow once",
+      "deny": "Deny",
+      "reply": "Reply",
+      "send": "Send",
+      "replyPlaceholder": "Say a reply",
+      "open": "Open on phone",
+      "alreadyAnswered": "Already answered on desktop",
+      "failed": "Could not send. Open Orca on your phone."
     }
   },
   "onboarding": {
