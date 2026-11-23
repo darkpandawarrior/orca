@@ -47,6 +47,10 @@ export type PushSendNotification = {
   body: string
   worktreeId?: string
   paneKey?: string
+  /** Set together, for a prompt the phone can answer from the notification. */
+  categoryId?: string
+  promptId?: string
+  sessionId?: string
   executionHost?: `runtime:${string}`
 }
 

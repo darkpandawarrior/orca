@@ -20,6 +20,7 @@ import {
   structuredAgentSessionTabId
 } from '../../../../shared/agent-session/view/structured-agent-session-projection'
 import { getRepoIdFromWorktreeId } from '../../../../shared/worktree/id'
+import { MOBILE_PUSH_PROMPT_CATEGORY_ID } from '../../../../shared/notifications/mobile-push-contract'
 import { isNotificationSourceEnabled } from '../../../../shared/notifications/notification-source-gate'
 import {
   folderWorkspaceKey,
@@ -199,6 +200,13 @@ export function createStructuredAttentionMobileDelivery(
         title,
         body,
         ...tapDestination(deps, scope, sessionId, paneKey),
+        ...(edge.type === 'prompt'
+          ? {
+              categoryId: MOBILE_PUSH_PROMPT_CATEGORY_ID,
+              promptId: edge.prompt.promptId,
+              sessionId
+            }
+          : {}),
         notificationId: attentionKey,
         attentionKey,
         ...(structuredAttentionOrigin(edge)

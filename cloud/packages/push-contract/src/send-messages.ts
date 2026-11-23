@@ -28,6 +28,10 @@ export const PushNotificationSchema = z
     body: z.string().max(PUSH_LIMITS.bodyMaxChars),
     worktreeId: z.string().min(1).max(2048).optional(),
     paneKey: z.string().min(1).max(2048).optional(),
+    // Set only for a structured agent prompt a phone can answer from the notification itself.
+    categoryId: z.string().min(1).max(128).optional(),
+    promptId: z.string().min(1).max(2048).optional(),
+    sessionId: z.string().min(1).max(2048).optional(),
     // The workspace's server; mirrors the app's runtime host id (cannot import src/shared).
     executionHost: z
       .string()
