@@ -219,6 +219,13 @@ export class PushDispatcher {
         ...content,
         ...(event.worktreeId ? { worktreeId: event.worktreeId } : {}),
         ...(event.paneKey ? { paneKey: event.paneKey } : {}),
+        ...(event.categoryId && event.promptId && event.sessionId
+          ? {
+              categoryId: event.categoryId,
+              promptId: event.promptId,
+              sessionId: event.sessionId
+            }
+          : {}),
         ...(event.executionHost ? { executionHost: event.executionHost } : {})
       }
     }

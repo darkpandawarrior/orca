@@ -41,6 +41,10 @@ export type MobileNotificationDispatchEvent = {
   workspaceExecutionHostId?: ExecutionHostId | null
   /** The pane the phone opens on tap; old phones ignore it and open the workspace's default tab. */
   paneKey?: string
+  /** Structured agent prompts only: lets the phone answer from the notification. */
+  categoryId?: string
+  promptId?: string
+  sessionId?: string
   /** See `NotificationDispatchRequest.executionHost`; old phones ignore it and open the desktop's. */
   executionHost?: `runtime:${string}`
   notificationId?: string

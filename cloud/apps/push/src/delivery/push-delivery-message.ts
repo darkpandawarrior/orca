@@ -6,6 +6,9 @@ export type PushOrcaData = {
   hostFingerprint: string
   worktreeId?: string
   paneKey?: string
+  categoryId?: string
+  promptId?: string
+  sessionId?: string
   executionHost?: string
   notificationId?: string
   notificationSeq: number
@@ -57,6 +60,9 @@ export function buildPushDelivery(input: {
       hostFingerprint,
       ...(notification.paneKey === undefined ? {} : { paneKey: notification.paneKey }),
       ...(notification.worktreeId === undefined ? {} : { worktreeId: notification.worktreeId }),
+      ...(notification.categoryId === undefined ? {} : { categoryId: notification.categoryId }),
+      ...(notification.promptId === undefined ? {} : { promptId: notification.promptId }),
+      ...(notification.sessionId === undefined ? {} : { sessionId: notification.sessionId }),
       ...(notification.executionHost === undefined
         ? {}
         : { executionHost: notification.executionHost }),
