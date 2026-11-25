@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Orca</string>
+    <string name="tile_label">Orca fleet</string>
+    <string name="complication_label">Orca needs you</string>
+</resources>
